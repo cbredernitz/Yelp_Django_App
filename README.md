@@ -1,7 +1,7 @@
 
 
 # Project Name
-Yelp_Django_App
+### Yelp_Django_App
 
 ## Purpose
 
