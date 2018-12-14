@@ -79,14 +79,17 @@ target/
 .ipynb_checkpoints
 
 # Environments
-hsenv/
-hsenv.bak/
+yelpEnv/
+yelpEnv.bak/
 
 # Django Secrets
 **/secrets.py
 
 # mkdocs documentation
 /site
+
+# VS Code
+.vscode/
 
 # mypy
 .mypy_cache/
