@@ -6,7 +6,7 @@
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
-
+from django.urls import reverse
 
 class Attire(models.Model):
     attire_id = models.AutoField(primary_key=True)
@@ -40,6 +40,7 @@ class Business(models.Model):
     noise_level = models.ForeignKey('NoiseLevel', models.DO_NOTHING, blank=True, null=True)
     attire = models.ForeignKey('Attire', models.DO_NOTHING, blank=True, null=True)
     city = models.ForeignKey('City', models.DO_NOTHING, blank=True, null=True)
+    state = models.ForeignKey('State', models.DO_NOTHING, blank=True, null=True)
     address = models.CharField(max_length=100, blank=True, null=True)
     neighborhood = models.CharField(max_length=100, blank=True, null=True)
     postal_code = models.CharField(max_length=15, blank=True, null=True)
@@ -57,12 +58,7 @@ class Business(models.Model):
         verbose_name_plural = "Business's Information"
 
     def __str__(self):
-        return '{}, {}, {}, {}, {}, {}'.format(self.business_name,
-                                               self.address,
-                                               self.city,
-                                               self.state,
-                                               self.business_stars,
-                                               self.business_review_count)
+        return self.business_name
 
 
 '''
@@ -91,7 +87,6 @@ class Business(models.Model):
 class City(models.Model):
     city_id = models.AutoField(primary_key=True)
     city_name = models.CharField(unique=True, max_length=45)
-    state = models.ForeignKey('State', models.DO_NOTHING, blank=True, null=True)
 
     class Meta:
         managed = False
@@ -157,14 +152,6 @@ class Review(models.Model):
         verbose_name = 'Review made by user about a business'
         verbose_name_plural = "Reviews made by users about various businesses"
 
-    def __str__(self):
-        return '{}, {}, {}, {}, {}'.format(self.business,
-                                               self.user,
-                                               self.stars,
-                                               self.date_created,
-                                               self.review_text)
-
-
 '''
 class Review(models.Model):
     review_id = models.AutoField(primary_key=True)
@@ -226,10 +213,25 @@ class User(models.Model):
         verbose_name_plural = "Users"
 
     def __str__(self):
-        return '{}, {}, {}, {}'.format(self.user_name,
-                                       self.review_count,
-                                       self.yelper_since,
-                                       self.average_stars)
+        return self.user_name
+
+    def get_absolute_url(self):
+		# return reverse('site_detail', args=[str(self.id)])
+        return reverse('user_detail', kwargs={'pk': self.pk})
+
+    @property
+    def business_names(self):
+
+        businesses = self.business.order_by('business_name')
+
+        names = []
+        for business in businesses:
+            name = business.business_name
+            if name is None:
+                continue
+            if name not in names:
+                names.append(name)
+        return ', '.join(names)
 
 '''
 class User(models.Model):

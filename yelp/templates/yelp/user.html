@@ -1,0 +1,39 @@
+{% extends "yelp/base.html" %}
+{% block content %}
+
+<article>
+  <header>
+      <div class="row">
+        <div class="col-sm-11">
+          <h2>Yelp Users</h2>
+        </div>
+        <div class="col-sm-1">
+          {% if user.is_authenticated %}
+            <a class="btn btn-outline-secondary" href="{% url 'user_new' %}">new</a>
+          {% endif %}
+        </div>
+      </div>
+    </header>
+  {% comment %} TODO: Follow the steps in 5.4 to remove dupicity {% endcomment %}
+  <!-- WARNING: there is no missing code between <nav>...</nav> -->
+  <nav>
+    {% include 'yelp/pagination.html' %}
+  </nav>
+
+  {% if users %}
+  <ul>
+    {% for user_ in users %}
+    
+    <!-- safe filter on for raw HTML stored in database -->
+    <li><a href="{% url 'user_detail' user_.pk %}">{{ user_.user_name | safe }}</a></li>
+
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p>No Yelp Users are available to view.</p>
+  {% endif %}
+
+  <p>page count: {{ users.count }}</p>
+</article>
+
+{% endblock content %}}

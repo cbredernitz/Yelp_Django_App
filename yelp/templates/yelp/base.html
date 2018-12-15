@@ -27,18 +27,21 @@
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'about' %}">about</a>
               </li>
-              {% comment %} <li class="nav-item">
-                <a class="nav-link" href="{% url 'search' %}">sites</a>
-              </li> {% endcomment %}
-            {% comment %} <li class="nav-item">
-              <a class="nav-link" href="{% url 'sites' %}">sites</a>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'user' %}">users</a>
+              </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'business' %}">business</a>
             </li>
             <li class="nav-item"> 
-              <a class="nav-link" href="{% url 'country_area' %}">countries/areas</a>
-            </li> {% endcomment %}
-            {% comment %} <li class="nav-item">
+              <a class="nav-link" href="{% url 'review' %}">reviews</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="{% url 'login' %}">login</a>
-            </li> {% endcomment %}
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'search' %}">search</a>
+            </li>
           </ul>
         </div>
     </nav>
