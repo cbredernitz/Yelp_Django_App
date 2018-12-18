@@ -39,14 +39,14 @@ class Business(models.Model):
     yelp_business_id = models.CharField(max_length=45, blank=True, null=True)
     noise_level = models.ForeignKey('NoiseLevel', models.PROTECT, blank=True, null=True)
     attire = models.ForeignKey('Attire', models.PROTECT, blank=True, null=True)
-    city = models.ForeignKey('City', models.PROTECT, blank=True, null=True)
-    state = models.ForeignKey('State', models.PROTECT, blank=True, null=True)
+    city = models.ForeignKey('City', models.PROTECT, blank=True, null=False)
+    state = models.ForeignKey('State', models.PROTECT, blank=True, null=False)
     address = models.CharField(max_length=100, blank=True, null=True)
     neighborhood = models.CharField(max_length=100, blank=True, null=True)
     postal_code = models.CharField(max_length=15, blank=True, null=True)
     latitude = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     longitude = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
-    business_stars = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+    business_stars = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=False)
     business_review_count = models.IntegerField(blank=True, null=True)
     is_open = models.IntegerField(blank=True, null=True)
 
@@ -139,11 +139,11 @@ class NoiseLevel(models.Model):
 
 class Review(models.Model):
     review_id = models.AutoField(primary_key=True)
-    business = models.ForeignKey('Business', models.PROTECT, blank=True, null=True)
-    user = models.ForeignKey('User', models.PROTECT, blank=True, null=True)
-    stars = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
-    date_created = models.DateField(blank=True, null=True)
-    review_text = models.TextField(blank=True, null=True)
+    business = models.ForeignKey('Business', models.PROTECT, blank=False, null=False)
+    user = models.ForeignKey('User', models.PROTECT, blank=False, null=False)
+    stars = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=False)
+    date_created = models.DateField(blank=True, null=False)
+    review_text = models.TextField(blank=True, null=False)
 
     class Meta:
         managed = False
@@ -196,12 +196,12 @@ class User(models.Model):
     user_id = models.AutoField(primary_key=True)
     user_name = models.CharField(max_length=45)
     review_count = models.IntegerField()
-    yelper_since = models.DateField(blank=True, null=True)
+    yelper_since = models.DateField(blank=True, null=False)
     useful = models.IntegerField(blank=True, null=True)
     cool = models.IntegerField(blank=True, null=True)
     funny = models.IntegerField(blank=True, null=True)
-    average_stars = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
-    yelp_user_id = models.CharField(max_length=45, blank=True, null=True)
+    average_stars = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=False)
+    yelp_user_id = models.CharField(max_length=45, blank=True, null=False)
 
     business = models.ManyToManyField(Business, through='Review')
 
