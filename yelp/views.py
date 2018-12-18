@@ -22,7 +22,7 @@ class BusinessListView(generic.ListView):
 	model = Business
 	context_object_name = 'businesses'
 	template_name = 'yelp/business.html'
-	paginate_by = 50
+	paginate_by = 100
 
 	def get_queryset(self):
 		return Business.objects.all()\
@@ -39,7 +39,7 @@ class UserListView(generic.ListView):
 	model = User
 	context_object_name = 'users'
 	template_name = 'yelp/user.html'
-	paginate_by = 50
+	paginate_by = 100
 
 	def dispatch(self, *args, **kwargs):
 		return super().dispatch(*args, **kwargs)

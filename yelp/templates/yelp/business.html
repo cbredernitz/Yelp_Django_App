@@ -14,11 +14,8 @@
         </div>
       </div>
     </header>
-  {% comment %} TODO: Follow the steps in 5.4 to remove dupicity {% endcomment %}
-  <!-- WARNING: there is no missing code between <nav>...</nav> -->
-  <nav>
-    {% include 'yelp/pagination.html' %}
-  </nav>
+
+{% include 'yelp/pagination.html' %}
 
   {% if businesses %}
   <ul>
