@@ -138,7 +138,7 @@ class UserUpdateView(generic.UpdateView):
 
 		# New countries list
 		businesses = form.cleaned_data['business']
-
+		# review = form.cleaned_data['review_text']		#New and check
 		# New ids
 		new_ids = []
 
