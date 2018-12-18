@@ -50,7 +50,7 @@ class UserFilter(django_filters.FilterSet):
     #     lookup_expr='exact'
     # )
 
-    userful = django_filters.NumberFilter(
+    useful = django_filters.NumberFilter(
         field_name='useful',
         label='Useful User',
         # queryset=User.objects.all().order_by(''),

@@ -18,7 +18,7 @@ The data set is comprised of 5 different JSON files. Specifically, there is a fi
 The Django app is comprised of 3 main views all with supporting detail views. The views are Users, Businesses, and Reviews with details about each when clicked on. Since the User's are the primary entity, a web form was created to add/edit/delete user's into the backend database. When creating a user, you can link them back to a business to show they have "reviewed" this entity. Via the API, a user will be able to GET/POST/PUT businesses into the backend. In order for this, the user needs to have an access key of which they can register themselves through the Django App.
 
 
-![yelp_data_model](https://user-images.githubusercontent.com/20977403/50186243-38cae500-02e8-11e9-9d62-d23bfae3989c.png)
+![yelp_data_model](https://user-images.githubusercontent.com/20977403/50186694-a1ff2800-02e9-11e9-867e-e4fd705c4c06.png)
 
 ## Package Dependencies
 

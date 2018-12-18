@@ -169,7 +169,7 @@ class Review(models.Model):
 
 class State(models.Model):
     state_id = models.AutoField(primary_key=True)
-    state_abbrev = models.CharField(unique=True, max_length=45)
+    state_abbrev = models.CharField(unique=True, max_length=10)
 
     class Meta:
         managed = False
