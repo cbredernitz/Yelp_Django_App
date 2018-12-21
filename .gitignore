@@ -12,6 +12,9 @@ local_settings.py
 db.sqlite3
 media
 
+### Django secrets ###
+**/secrets.py
+
 ### Intellij ###
 .idea/
 *.iml
@@ -79,17 +82,11 @@ target/
 .ipynb_checkpoints
 
 # Environments
-yelpEnv/
-yelpEnv.bak/
-
-# Django Secrets
-**/secrets.py
+venv/
+venv.bak/
 
 # mkdocs documentation
 /site
-
-# VS Code
-.vscode/
 
 # mypy
 .mypy_cache/
