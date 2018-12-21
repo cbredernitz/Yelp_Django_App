@@ -16,6 +16,7 @@
       </div>
     </div>
   </header>
+
   <div class="row">
     <div class="col-sm-3">
       <div class="px-2 py-2" style="border:1px solid #8E8D8A;">
@@ -33,9 +34,8 @@
             <div class="col-sm-9">
               <p>{{ user.business_names | safe }}</p>
             </div>
+          </div>
         {% endif %}
-        </div>
-      </div>
     {% empty %}
       Select one or more filters relevant to your search and then click "filter".
     {% endfor %}
